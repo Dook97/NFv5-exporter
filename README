@@ -1,0 +1,41 @@
+# p2nprobe
+
+Export information about TCP streams from a pcap file as
+NetFlow v5 data.
+
+## Building
+
+Build requires a c++23 compiler and libpcap. Only usable in
+POSIX environments.
+
+## A warning
+
+This was an exercise for me to learn about libpcap in which
+creating a workable NFv5 exporter was a non-goal.
+
+## Usage
+
+```
+USAGE
+
+    p2nprobe <host>:<port> <pcap_file> [-a <active_timeout> -i <inactive_timeout>]
+    p2nprobe -h
+
+OPTIONS
+
+    <host>:<port>  Socket address of a running NetFlow v5 collector
+
+    <pcap_file>    The pcap file to be processed
+
+    -a UINT        Duration since start of a flow after which it
+                   is flushed. (optional; default 60s)
+
+    -i UINT        Duration after which if no packet is sent a
+                   flow is flushed (optional; default 60s)
+
+    -h             This help
+```
+
+------------------------------------------------------------
+
+Author: Jan Doskočil
